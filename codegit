@@ -1,0 +1,91 @@
+#include <iostream>
+
+using namespace std;
+
+
+string guessWord, guessingWord, newGuessingWord;
+char guessedLetter;
+int chance=0;
+bool gameOver = false;
+
+int guessLetter();
+
+
+int Spaces(){
+cout<<"Enter the word to be guessed for player 2: "<<endl;
+cin>>guessWord;
+system("CLS");
+
+
+for (int i = 1; i<= guessWord.length(); i++){
+
+    guessingWord+="*";
+}
+cout<<guessingWord<<endl;
+guessLetter();
+
+
+return 0;
+}
+
+
+int guessLetter(){
+
+    if (chance>4){
+            cout<<"sorry you have run out of chances, the correct word was "<<guessWord<<endl;
+        gameOver = true;
+    }
+
+
+
+while(!gameOver){
+cout<<"Enter a guessing letter"<<endl;
+cin>>guessedLetter;
+
+newGuessingWord="";
+for (int i = 0; i< guessWord.length(); i++){
+
+    if (guessWord[i]!=guessedLetter){
+        newGuessingWord+=guessingWord[i];
+    }
+    else{
+        newGuessingWord+=guessWord[i];
+    }
+
+}
+
+
+if(newGuessingWord==guessingWord){
+    chance+=1;
+}
+else{
+    guessingWord=newGuessingWord;
+}
+
+
+ cout<<newGuessingWord<<endl;
+
+ if (newGuessingWord==guessWord){
+    cout<<"Congratulations you won"<<endl;
+    gameOver=true;
+
+ }
+
+else{
+    guessLetter();
+}
+
+}
+
+return 0;
+}
+
+
+
+
+
+int main()
+{
+    Spaces();
+    return 0;
+}
