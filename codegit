@@ -3,6 +3,10 @@
 using namespace std;
 
 
+
+
+
+
 string guessWord, guessingWord, newGuessingWord;
 char guessedLetter;
 int chance=0;
